@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Features</title>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<!--[if IE 7]>
+<!--<link rel="stylesheet" href="font-awesome/css/font-awesome-ie7.min.css">-->
+
+<link rel="stylesheet" type="text/css" href="fontawesome-free-5.7.2-web/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="fontawesome-free-5.7.2-web/css/v4-shims.min.css">
+
+<!-- JQuery -->
+<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><link rel="stylesheet" type="text/css" href="chartist/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.min.css">
+<link rel="stylesheet" type="text/css" href="chartist/dist/chartist.min.css">
+<script src="chartist/dist/chartist.min.js"></script>
+<script src="chartist/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.min.js"></script>
+<!-- Required Stylesheets -->
+<link href="bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
+
+<!-- Required Javascript -->
+<script src="bootstrap-treeview/dist/bootstrap-treeview.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.10.20/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.10.20/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.10.20/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="datatables/1.10.20/datatables.bootstrap4.min.js"></script>
+<link type="text/css" href="datatables/1.10.20/datatables.bootstrap4.min.css" rel="stylesheet" />
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+<link rel="stylesheet" href="css/core.css"/>
+<link rel="stylesheet" href="css/link.css"/>
+<link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/><!-- JQuery-UI -->
+<link type="text/css" href="jqueryui/1.11.2-start/jquery-ui.min.css" rel="Stylesheet" />
+<script type="text/javascript" src="jqueryui/1.11.2-start/jquery-ui.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.10.20/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.10.20/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.10.20/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="datatables/1.10.20/datatables.bootstrap4.min.js"></script>
+<link type="text/css" href="datatables/1.10.20/datatables.bootstrap4.min.css" rel="stylesheet" />
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+
+
+
+    <script>
+
+        $(document).ready(function () {
+
+            var scenarioTable = $('.scenario-result-table').DataTable({
+
+                "order": [],
+                "language": {
+                    searchPlaceholder: "Filter",
+                    search: ""
+                }
+            });
+
+            $('.example-table table').DataTable({
+                searching: false,
+                ordering: false,
+                paging: false,
+                info: false
+            });
+
+            $('.example-table-in-scenario table').DataTable({
+                searching: false,
+                ordering: false,
+                paging: false,
+                info: false
+            });
+
+            $('#evidence-table').DataTable(
+                {
+                    searching: false,
+                    ordering: false,
+                    paging: false,
+                    info: false
+                }
+            );
+
+
+            $(".scenario-docs .card-body table").wrap("<div class='table-responsive'></div>");
+
+            $("#requirements-tabs").tabs();
+            $("#test-tabs").tabs();
+
+            var requirementsTree = [{"text":"Change page language","type":"feature","href":"ecd45fd18f7e5a5b9cc0a6109ad2a53be54110c062835a09f2e9f0df1bece59d.html","nodes":[],"selectable":false,"tags":["\u003ca href\u003d\u0027##beforetable\u0027\u003e\u003ci class\u003d\u0027far fa-stop-circle pending-icon \u0027 title\u003d\u0027PENDING\u0027\u003e\u003c/i\u003e\u003c/a\u003e","\u003cspan class\u003d\u0027feature-count\u0027\u003e13 scenarios\u003c/span\u003e"]}];
+
+            $('#tree').treeview({
+                data: requirementsTree,
+                enableLinks: true,
+                showTags: true,
+                expandIcon: "glyphicon glyphicon-folder-close",
+                collapseIcon: "glyphicon glyphicon-folder-open",
+                emptyIcon: "glyphicon glyphicon-book"
+            });
+
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $(".scenario-docs > div > p").html(function () {
+                var text = $(this).text().trim().split(" ");
+                var first = text.shift();
+                return (text.length > 0 ? "<strong>" + first + "</strong> " : first) + text.join(" ");
+            });
+        });
+    </script>
+</head>
+
+<body class="results-page">
+<div id="topheader">
+    <div id="topbanner">
+        <div id="logo"><a href="index.html"><img src="images/serenity-logo.png" border="0"/></a></div>
+        <div id="projectname-banner" style="float:right">
+            <span class="projectname">
+                <span class="projecttitle"></span>
+                <span class="projectsubtitle"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+
+<div class="middlecontent">
+    <div id="contenttop">
+        <div class="middlebg">
+            <span class="breadcrumbs">
+            <a href='index.html'>Home</a> > <a href="capabilities.html">Requirements</a>
+
+
+
+                    > <span class="truncate-40">Change Page Language</span>
+
+            </span>
+        </div>
+        <div class="rightbg"></div>
+    </div>
+    <div class="clr"></div>
+
+    <!--/* starts second table*/-->
+
+<div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li >
+            <a href="index.html"><i class="fa fa-check-square-o"></i> Overall Test Results</a>
+        </li>
+        <li >
+            <a href="capabilities.html"><i class="fa fa-book"></i> Requirements</a>
+        </li>
+        <li class="active">
+            <a href="#"><i class="fa fa-comments-o"></i> Features</a>
+        </li>
+    </ul>
+    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 27-09-2023 16:24</span>
+    <br style="clear:left"/>
+</div>
+
+    <div class="clr"></div>
+
+    <div id="beforetable"></div>
+    <div id="results-dashboard">
+        <div class="table">
+            <div class=row">
+                <div class="col-sm-12">
+                    <div>
+                        <div clas="table">
+                            <div class="row">
+                                    <div class="col-sm-12">
+                                        <span>
+                                            <h2><i class="fa fa-book"></i> Feature:  Change Page Language</h2>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="requirementNarrativeTitle">
+                                As a web user, I change the language of the page
+                            </div>
+
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-12">
+
+                        <!-- Requirements result tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a data-toggle="tab" href="#specs"><i class="fas fa-comments"></i> Specifications</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#results"><i class="fas fa-tachometer-alt"></i> Test Results</a>
+                            </li>
+                        </ul>
+
+                        <!-- Specifications and Results tabs -->
+                        <div class="card border">
+                            <div class="tab-content" id="pills-tabContent">
+                                <div id="specs" class="tab-pane fade in active">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+
+                                                    <!--- TOC --->
+                                                    <div id="toc">
+                                                        <h3>Overview</h3>
+                                                        <table class="table" id="toc-table">
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#cf741db38ad37f8e230ca432c8b6e0211df848a59a1f156a52169abcf657be9f" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Acceptance Test: Validation of language change to "English US
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                               href="f8ca33c4392ff98ec903509180a1e1ee13d18995da6f3e15d33c3426d8ff00c7.html"
+                                                                                               title="View test results">
+                                                                                                <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a>
+                                                                                                </a>
+
+
+                                                                                        </td>
+                                                                                            <td>
+                                                                                                <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                                   href="f8ca33c4392ff98ec903509180a1e1ee13d18995da6f3e15d33c3426d8ff00c7.html"
+                                                                                                   title="View test results">
+                                                                                                    <i class="fas fa-search-plus"></i>
+                                                                                                </a>
+                                                                                            </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#0d652b25de9ea25bd560084d3b4bbc7f27f0328d8560edbaf8e8883197ad40d6" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Acceptance Test: Validation of language change to "English UK"
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                               href="bd353e208d295451b9bf5ce897ecfd7df4693a6f4bf00776968bef048cb16efd.html"
+                                                                                               title="View test results">
+                                                                                                <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a>
+                                                                                                </a>
+
+
+                                                                                        </td>
+                                                                                            <td>
+                                                                                                <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                                   href="bd353e208d295451b9bf5ce897ecfd7df4693a6f4bf00776968bef048cb16efd.html"
+                                                                                                   title="View test results">
+                                                                                                    <i class="fas fa-search-plus"></i>
+                                                                                                </a>
+                                                                                            </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#1f67ce9d96e6c48b1f1c95ab331ce528880c801438412432fce78b7a7bed039d" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Acceptance Test: Validation of language change to "French"
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                               href="a426d19a09c5c0a16e1bf4e2a5e3cd04bece0241738478eddd7bdee6948a84a3.html"
+                                                                                               title="View test results">
+                                                                                                <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a>
+                                                                                                </a>
+
+
+                                                                                        </td>
+                                                                                            <td>
+                                                                                                <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                                   href="a426d19a09c5c0a16e1bf4e2a5e3cd04bece0241738478eddd7bdee6948a84a3.html"
+                                                                                                   title="View test results">
+                                                                                                    <i class="fas fa-search-plus"></i>
+                                                                                                </a>
+                                                                                            </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#dbe583ae33fd175590d97f369377550db161baa444dcbc3a4a242cb0d58ea11f" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Acceptance Test: Validation of language change to "German"
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                               href="037388cdcb8c7221b20445cb53d367c2aab28bc52c43aa1291877b7b24cc5d1e.html"
+                                                                                               title="View test results">
+                                                                                                <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a>
+                                                                                                </a>
+
+
+                                                                                        </td>
+                                                                                            <td>
+                                                                                                <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                                   href="037388cdcb8c7221b20445cb53d367c2aab28bc52c43aa1291877b7b24cc5d1e.html"
+                                                                                                   title="View test results">
+                                                                                                    <i class="fas fa-search-plus"></i>
+                                                                                                </a>
+                                                                                            </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#86aa9521b109e6ed822f8aa6d1b360cccadd7aa028337aa62790af2248b58d25" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Acceptance Test: Validation of language change to "Portuguese"
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                               href="afcdb833d4c31c653cbc8b71696bfbe18aad43b46627de755b42b41cfd74d838.html"
+                                                                                               title="View test results">
+                                                                                                <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a>
+                                                                                                </a>
+
+
+                                                                                        </td>
+                                                                                            <td>
+                                                                                                <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                                   href="afcdb833d4c31c653cbc8b71696bfbe18aad43b46627de755b42b41cfd74d838.html"
+                                                                                                   title="View test results">
+                                                                                                    <i class="fas fa-search-plus"></i>
+                                                                                                </a>
+                                                                                            </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#36875b239076e04556d3c7846cf9971754fc4b7daef4d56ec02165d86b8fdd39" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Acceptance Test: Validation of language change to "Portuguese PT"
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                               href="f6dd44624986caafdfc8afee23c5d20ef50492a38f86d038a27c961c72abd583.html"
+                                                                                               title="View test results">
+                                                                                                <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a>
+                                                                                                </a>
+
+
+                                                                                        </td>
+                                                                                            <td>
+                                                                                                <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                                   href="f6dd44624986caafdfc8afee23c5d20ef50492a38f86d038a27c961c72abd583.html"
+                                                                                                   title="View test results">
+                                                                                                    <i class="fas fa-search-plus"></i>
+                                                                                                </a>
+                                                                                            </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#72d782cc68c7c4e5e5a5dbe5655ea3107c4eb6b50f361b83bf387ae65a9e4201" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Acceptance Test: Validation of language change to "Italian"
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                               href="5144da434940f13b73daf72b1013b217b9fd9f07535b8c4f9dbaab57ae7e9c4a.html"
+                                                                                               title="View test results">
+                                                                                                <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a>
+                                                                                                </a>
+
+
+                                                                                        </td>
+                                                                                            <td>
+                                                                                                <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                                   href="5144da434940f13b73daf72b1013b217b9fd9f07535b8c4f9dbaab57ae7e9c4a.html"
+                                                                                                   title="View test results">
+                                                                                                    <i class="fas fa-search-plus"></i>
+                                                                                                </a>
+                                                                                            </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#ac2d06619620ebf97b6db9cd75a62ae67ea1de1ef9b9f2f439132b6da14bb40a" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Acceptance Test: Validation of language change to "Japanese"
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                               href="06086ec4c12503e0458b691f471718c483d949f66075c169a967542d19fadee5.html"
+                                                                                               title="View test results">
+                                                                                                <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a>
+                                                                                                </a>
+
+
+                                                                                        </td>
+                                                                                            <td>
+                                                                                                <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                                   href="06086ec4c12503e0458b691f471718c483d949f66075c169a967542d19fadee5.html"
+                                                                                                   title="View test results">
+                                                                                                    <i class="fas fa-search-plus"></i>
+                                                                                                </a>
+                                                                                            </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#d40b178cad85f555605e6c373253778854645a68ac332f611ef3e0cdf4167608" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Acceptance Test: Validation of language change to "Mandarin"
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                               href="a2ac0babf02e29533473314257e79530dcce6be20beeaa1cdf305dc8927c25ca.html"
+                                                                                               title="View test results">
+                                                                                                <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a>
+                                                                                                </a>
+
+
+                                                                                        </td>
+                                                                                            <td>
+                                                                                                <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                                   href="a2ac0babf02e29533473314257e79530dcce6be20beeaa1cdf305dc8927c25ca.html"
+                                                                                                   title="View test results">
+                                                                                                    <i class="fas fa-search-plus"></i>
+                                                                                                </a>
+                                                                                            </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#53e00c03a8e6410fe466c66ad2a55e6ac983b29ae175bc53092ed0aefc789188" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Acceptance Test: Validation of language change to "Russian"
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                               href="c2184b9b3f8ccfe2d621bfa0b8f70bde5868cf36c91947994652115325cc6c65.html"
+                                                                                               title="View test results">
+                                                                                                <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a>
+                                                                                                </a>
+
+
+                                                                                        </td>
+                                                                                            <td>
+                                                                                                <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                                   href="c2184b9b3f8ccfe2d621bfa0b8f70bde5868cf36c91947994652115325cc6c65.html"
+                                                                                                   title="View test results">
+                                                                                                    <i class="fas fa-search-plus"></i>
+                                                                                                </a>
+                                                                                            </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#9131b6445c6693d9c9b3793edf2f17cd2f2de8adc2fdc3d323e116147ea627af" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Acceptance Test: Validation of language change to "Greek"
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                               href="4fa57374c83c4bc474b2e18776d1af7053dedce777c87c466b5f5f7e0e911de3.html"
+                                                                                               title="View test results">
+                                                                                                <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a>
+                                                                                                </a>
+
+
+                                                                                        </td>
+                                                                                            <td>
+                                                                                                <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                                   href="4fa57374c83c4bc474b2e18776d1af7053dedce777c87c466b5f5f7e0e911de3.html"
+                                                                                                   title="View test results">
+                                                                                                    <i class="fas fa-search-plus"></i>
+                                                                                                </a>
+                                                                                            </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#3ca1c693a85e4acabae86847e1a2c34a7fccf8620509096a741ef15c167548e8" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Acceptance Test: Validation of language change to "Polish"
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                               href="a03b9f3b4a09cb18b5f6b9c998b4525db1b2dcddb0581d458c68a551b6a7f3ce.html"
+                                                                                               title="View test results">
+                                                                                                <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a>
+                                                                                                </a>
+
+
+                                                                                        </td>
+                                                                                            <td>
+                                                                                                <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                                   href="a03b9f3b4a09cb18b5f6b9c998b4525db1b2dcddb0581d458c68a551b6a7f3ce.html"
+                                                                                                   title="View test results">
+                                                                                                    <i class="fas fa-search-plus"></i>
+                                                                                                </a>
+                                                                                            </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#7c21c8d48a01243f8f7463accd8d61800ccb4a005d1859a0941d43f38d168ae4" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Acceptance Test: Validation of language change to "Filipino"
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                               href="6b46e7d02ad4f95dd58a0fe39de1adbb5da85e880a178e2ef819198e4574e81b.html"
+                                                                                               title="View test results">
+                                                                                                <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a>
+                                                                                                </a>
+
+
+                                                                                        </td>
+                                                                                            <td>
+                                                                                                <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                                   href="6b46e7d02ad4f95dd58a0fe39de1adbb5da85e880a178e2ef819198e4574e81b.html"
+                                                                                                   title="View test results">
+                                                                                                    <i class="fas fa-search-plus"></i>
+                                                                                                </a>
+                                                                                            </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                        </table>
+                                                    </div>
+                                                    <!--- END OF TOC --->
+
+                                                    <h3>Scenarios</h3>
+
+                                                        <a name="738030be-8b4c-4209-ba18-9d6d70c097ae" ></a>
+
+
+                                                            <div class="scenario-docs card" id="cf741db38ad37f8e230ca432c8b6e0211df848a59a1f156a52169abcf657be9f">
+                                                                <div class="scenario-docs card-header pending"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href="f8ca33c4392ff98ec903509180a1e1ee13d18995da6f3e15d33c3426d8ff00c7.html"
+                                                                   title="View test results">Acceptance Test: Validation of language change to "English US</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given the user is on the page</p>
+                                                                        <p>When the user changes the language to English</p>
+                                                                        <p>Then the user observes that the page is translated into English</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="0d652b25de9ea25bd560084d3b4bbc7f27f0328d8560edbaf8e8883197ad40d6">
+                                                                <div class="scenario-docs card-header pending"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href="bd353e208d295451b9bf5ce897ecfd7df4693a6f4bf00776968bef048cb16efd.html"
+                                                                   title="View test results">Acceptance Test: Validation of language change to "English UK"</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given the user is on the page</p>
+                                                                        <p>When the user changes the language to English UK</p>
+                                                                        <p>Then the user observes that the page is translated into English UK</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="1f67ce9d96e6c48b1f1c95ab331ce528880c801438412432fce78b7a7bed039d">
+                                                                <div class="scenario-docs card-header pending"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href="a426d19a09c5c0a16e1bf4e2a5e3cd04bece0241738478eddd7bdee6948a84a3.html"
+                                                                   title="View test results">Acceptance Test: Validation of language change to "French"</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given the user is on the page</p>
+                                                                        <p>When the user changes the language to French</p>
+                                                                        <p>Then the user observes that the page is translated into French</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="dbe583ae33fd175590d97f369377550db161baa444dcbc3a4a242cb0d58ea11f">
+                                                                <div class="scenario-docs card-header pending"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href="037388cdcb8c7221b20445cb53d367c2aab28bc52c43aa1291877b7b24cc5d1e.html"
+                                                                   title="View test results">Acceptance Test: Validation of language change to "German"</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given the user is on the page</p>
+                                                                        <p>When the user changes the language to German</p>
+                                                                        <p>Then the user observes that the page is translated into German</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="86aa9521b109e6ed822f8aa6d1b360cccadd7aa028337aa62790af2248b58d25">
+                                                                <div class="scenario-docs card-header pending"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href="afcdb833d4c31c653cbc8b71696bfbe18aad43b46627de755b42b41cfd74d838.html"
+                                                                   title="View test results">Acceptance Test: Validation of language change to "Portuguese"</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given the user is on the page</p>
+                                                                        <p>When the user changes the language to Portuguese</p>
+                                                                        <p>Then the user observes that the page is translated into Portuguese</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="36875b239076e04556d3c7846cf9971754fc4b7daef4d56ec02165d86b8fdd39">
+                                                                <div class="scenario-docs card-header pending"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href="f6dd44624986caafdfc8afee23c5d20ef50492a38f86d038a27c961c72abd583.html"
+                                                                   title="View test results">Acceptance Test: Validation of language change to "Portuguese PT"</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given the user is on the page</p>
+                                                                        <p>When the user changes the language to Portuguese PT</p>
+                                                                        <p>Then the user observes that the page is translated into Portuguese PT</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="72d782cc68c7c4e5e5a5dbe5655ea3107c4eb6b50f361b83bf387ae65a9e4201">
+                                                                <div class="scenario-docs card-header pending"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href="5144da434940f13b73daf72b1013b217b9fd9f07535b8c4f9dbaab57ae7e9c4a.html"
+                                                                   title="View test results">Acceptance Test: Validation of language change to "Italian"</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given the user is on the page</p>
+                                                                        <p>When the user changes the language to Italian</p>
+                                                                        <p>Then the user observes that the page is translated into Italian</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="ac2d06619620ebf97b6db9cd75a62ae67ea1de1ef9b9f2f439132b6da14bb40a">
+                                                                <div class="scenario-docs card-header pending"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href="06086ec4c12503e0458b691f471718c483d949f66075c169a967542d19fadee5.html"
+                                                                   title="View test results">Acceptance Test: Validation of language change to "Japanese"</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given the user is on the page</p>
+                                                                        <p>When the user changes the language to Japanese</p>
+                                                                        <p>Then the user observes that the page is translated into Japanese</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="d40b178cad85f555605e6c373253778854645a68ac332f611ef3e0cdf4167608">
+                                                                <div class="scenario-docs card-header pending"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href="a2ac0babf02e29533473314257e79530dcce6be20beeaa1cdf305dc8927c25ca.html"
+                                                                   title="View test results">Acceptance Test: Validation of language change to "Mandarin"</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given the user is on the page</p>
+                                                                        <p>When the user changes the language to Mandarin</p>
+                                                                        <p>Then the user observes that the page is translated into Mandarin</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="53e00c03a8e6410fe466c66ad2a55e6ac983b29ae175bc53092ed0aefc789188">
+                                                                <div class="scenario-docs card-header pending"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href="c2184b9b3f8ccfe2d621bfa0b8f70bde5868cf36c91947994652115325cc6c65.html"
+                                                                   title="View test results">Acceptance Test: Validation of language change to "Russian"</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given the user is on the page</p>
+                                                                        <p>When the user changes the language to Russian</p>
+                                                                        <p>Then the user observes that the page is translated into Russian</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="9131b6445c6693d9c9b3793edf2f17cd2f2de8adc2fdc3d323e116147ea627af">
+                                                                <div class="scenario-docs card-header pending"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href="4fa57374c83c4bc474b2e18776d1af7053dedce777c87c466b5f5f7e0e911de3.html"
+                                                                   title="View test results">Acceptance Test: Validation of language change to "Greek"</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given the user is on the page</p>
+                                                                        <p>When the user changes the language to Greek</p>
+                                                                        <p>Then the user observes that the page is translated into Greek</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="3ca1c693a85e4acabae86847e1a2c34a7fccf8620509096a741ef15c167548e8">
+                                                                <div class="scenario-docs card-header pending"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href="a03b9f3b4a09cb18b5f6b9c998b4525db1b2dcddb0581d458c68a551b6a7f3ce.html"
+                                                                   title="View test results">Acceptance Test: Validation of language change to "Polish"</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given the user is on the page</p>
+                                                                        <p>When the user changes the language to Polish</p>
+                                                                        <p>Then the user observes that the page is translated into Polish</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="7c21c8d48a01243f8f7463accd8d61800ccb4a005d1859a0941d43f38d168ae4">
+                                                                <div class="scenario-docs card-header pending"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href="6b46e7d02ad4f95dd58a0fe39de1adbb5da85e880a178e2ef819198e4574e81b.html"
+                                                                   title="View test results">Acceptance Test: Validation of language change to "Filipino"</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given the user is on the page</p>
+                                                                        <p>When the user changes the language to Filipino</p>
+                                                                        <p>Then the user observes that the page is translated into Filipino</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="results" class="tab-pane fade">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+
+                                                <div style="width:300px;" class="chart-container automated-and-manual-results">
+                                                    <div class="ct-chart ct-square"></div>
+                                                </div>
+                                                <script>
+
+                                                    var labels = [' ', ' ', '100%', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
+                                                    // Our series array that contains series objects or in this case series data arrays
+
+                                                    var series = [{meta: 'Passing tests (automated)', value: 0}, {meta: 'Passing tests (manual)', value: 0}, {meta: 'Pending tests (automated)', value: 13}, {meta: 'Pending tests (manual)', value: 0}, {meta: 'Ignored tests (automated)', value: 0}, {meta: 'Ignored tests (manual)', value: 0}, {meta: 'Skipped tests (automated)', value: 0}, {meta: 'Skipped tests (manual)', value: 0}, {meta: 'Failing tests (automated)', value: 0}, {meta: 'Failing tests (manual)', value: 0}, {meta: 'Broken tests (automated)', value: 0}, {meta: 'Broken tests (manual)', value: 0}, {meta: 'Compromised tests (automated)', value: 0}, {meta: 'Compromised tests (manual)', value: 0}];
+
+                                                    // As options we currently only set a static size of 300x200 px. We can also omit this and use aspect ratio containers
+                                                    // as you saw in the previous example
+                                                    var options = {
+                                                        width: 350,
+                                                        height: 300
+                                                    };
+
+                                                    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                                                        new Chartist.Pie('.ct-chart', {
+                                                            series: series,
+                                                            labels: labels,
+                                                        }, {
+                                                            donut: true,
+                                                            donutWidth: 60,
+                                                            donutSolid: true,
+                                                            startAngle: 270,
+                                                            showLabel: true
+                                                        }, options);
+                                                    });
+
+                                                </script>
+                                            </div>
+                                            <div class="col-sm-8">
+
+                                                    <table class="table">
+                                                        <thead>
+                                                        <tr>
+                                                            <th scope="col">Scenario Results (including rows of test
+                                                                data)
+                                                            </th>
+                                                            <th scope="col" colspan="2" class="automated-stats">
+                                                                Automated
+                                                            </th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                                <td class="aggregate-result-count"><i
+                                                                            class='fa fa-check-circle-o success-icon'></i>&nbsp;Passing
+                                                                </td>
+                                                            <td class="automated-stats">0</td>
+                                                            <td class="automated-stats"> </td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td class="aggregate-result-count">
+                                                                    <a href="25ff7e5674654dfe32315a26977e11f271140a633e4411f874f5c9cb55a46eb0.html"><i
+                                                                                class='fa fa-stop-circle-o pending-icon'></i>&nbsp;Pending</a>
+                                                                </td>
+                                                            <td class="automated-stats">13</td>
+                                                            <td class="automated-stats">100%</td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td class="aggregate-result-count"><i
+                                                                            class='fa fa-ban ignored-icon'></i>&nbsp;Ignored
+                                                                </td>
+                                                            <td class="automated-stats">0</td>
+                                                            <td class="automated-stats"> </td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td class="aggregate-result-count"><i
+                                                                            class='fa fa-fast-forward skip-icon'></i>&nbsp;Skipped
+                                                                </td>
+                                                            <td class="automated-stats">0</td>
+                                                            <td class="automated-stats"> </td>
+                                                        </tr>
+                                                        <tr>
+                                                                    <td colspan="3"><i
+                                                                                class='fa fa-times failure-icon'></i>&nbsp;<em>Unsuccessful</em></a>
+                                                                    </td>
+
+                                                        </tr>
+
+                                                        <tr>
+                                                                <td class="aggregate-result-count indented-error-category">
+                                                                    <i
+                                                                            class='fa fa-times-circle failure-icon'></i>&nbsp;Failed
+                                                                </td>
+                                                            <td class="automated-stats">0</td>
+                                                            <td class="automated-stats"> </td>
+                                                        <tr>
+                                                                <td class="aggregate-result-count indented-error-category">
+                                                                    <i
+                                                                            class='fa fa-exclamation-triangle error-icon'></i>&nbsp;Broken
+                                                                </td>
+                                                            <td class="automated-stats">0</td>
+                                                            <td class="automated-stats"> </td>
+                                                        <tr>
+                                                                <td class="aggregate-result-count indented-error-category">
+                                                                    <i
+                                                                            class='fa fa-chain-broken compromised-icon'></i>&nbsp;Compromised
+                                                                </td>
+                                                            <td class="automated-stats">0</td>
+                                                            <td class="automated-stats"> </td>
+                                                        </tr>
+                                                        <tr class="summary-stats">
+                                                            <td class="aggregate-result-count">Total</td>
+                                                            <td class="automated-stats">13</td>
+                                                            <td class="automated-stats"></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <table class="table">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Execution Time</th>
+                                                            <th>Clock Time</th>
+                                                            <th>Fastest Test</th>
+                                                            <th>Slowest Test</th>
+                                                            <th>Average Execution Time</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td> 1m 25s</td>
+                                                            <td> 1m 27s</td>
+                                                            <td>5s</td>
+                                                            <td>9s</td>
+                                                            <td>6s</td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <h3><i class="fas fa-cogs"></i> Automated Tests</h3>
+
+                                                        <table class="scenario-result-table table"
+                                                               id="scenario-results">
+                                                            <thead>
+                                                            <tr>
+                                                                <th class="test-name-column">Scenario</th>
+                                                                <th>Steps</th>
+                                                                <th>Start Time</th>
+                                                                <th>Duration</th>
+                                                                <th>Result</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr class="scenario-result PENDING">
+                                                                    <td>
+                                                                            <a href="f8ca33c4392ff98ec903509180a1e1ee13d18995da6f3e15d33c3426d8ff00c7.html">Validation of language change to "English US</a>
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td>16:24:33</td>
+                                                                    <td>9s 825ms</td>
+                                                                    <td>
+                                                                            <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a> <span
+                                                                                style="display:none">PENDING</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result PENDING">
+                                                                    <td>
+                                                                            <a href="bd353e208d295451b9bf5ce897ecfd7df4693a6f4bf00776968bef048cb16efd.html">Validation of language change to "English UK"</a>
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td>16:24:44</td>
+                                                                    <td>6s 331ms</td>
+                                                                    <td>
+                                                                            <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a> <span
+                                                                                style="display:none">PENDING</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result PENDING">
+                                                                    <td>
+                                                                            <a href="a426d19a09c5c0a16e1bf4e2a5e3cd04bece0241738478eddd7bdee6948a84a3.html">Validation of language change to "French"</a>
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td>16:24:51</td>
+                                                                    <td>6s 222ms</td>
+                                                                    <td>
+                                                                            <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a> <span
+                                                                                style="display:none">PENDING</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result PENDING">
+                                                                    <td>
+                                                                            <a href="037388cdcb8c7221b20445cb53d367c2aab28bc52c43aa1291877b7b24cc5d1e.html">Validation of language change to "German"</a>
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td>16:24:58</td>
+                                                                    <td>5s 909ms</td>
+                                                                    <td>
+                                                                            <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a> <span
+                                                                                style="display:none">PENDING</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result PENDING">
+                                                                    <td>
+                                                                            <a href="afcdb833d4c31c653cbc8b71696bfbe18aad43b46627de755b42b41cfd74d838.html">Validation of language change to "Portuguese"</a>
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td>16:25:05</td>
+                                                                    <td>6s 065ms</td>
+                                                                    <td>
+                                                                            <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a> <span
+                                                                                style="display:none">PENDING</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result PENDING">
+                                                                    <td>
+                                                                            <a href="f6dd44624986caafdfc8afee23c5d20ef50492a38f86d038a27c961c72abd583.html">Validation of language change to "Portuguese PT"</a>
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td>16:25:11</td>
+                                                                    <td>5s 813ms</td>
+                                                                    <td>
+                                                                            <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a> <span
+                                                                                style="display:none">PENDING</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result PENDING">
+                                                                    <td>
+                                                                            <a href="5144da434940f13b73daf72b1013b217b9fd9f07535b8c4f9dbaab57ae7e9c4a.html">Validation of language change to "Italian"</a>
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td>16:25:18</td>
+                                                                    <td>6s 171ms</td>
+                                                                    <td>
+                                                                            <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a> <span
+                                                                                style="display:none">PENDING</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result PENDING">
+                                                                    <td>
+                                                                            <a href="06086ec4c12503e0458b691f471718c483d949f66075c169a967542d19fadee5.html">Validation of language change to "Japanese"</a>
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td>16:25:25</td>
+                                                                    <td>6s 414ms</td>
+                                                                    <td>
+                                                                            <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a> <span
+                                                                                style="display:none">PENDING</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result PENDING">
+                                                                    <td>
+                                                                            <a href="a2ac0babf02e29533473314257e79530dcce6be20beeaa1cdf305dc8927c25ca.html">Validation of language change to "Mandarin"</a>
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td>16:25:32</td>
+                                                                    <td>6s 330ms</td>
+                                                                    <td>
+                                                                            <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a> <span
+                                                                                style="display:none">PENDING</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result PENDING">
+                                                                    <td>
+                                                                            <a href="c2184b9b3f8ccfe2d621bfa0b8f70bde5868cf36c91947994652115325cc6c65.html">Validation of language change to "Russian"</a>
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td>16:25:39</td>
+                                                                    <td>6s 352ms</td>
+                                                                    <td>
+                                                                            <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a> <span
+                                                                                style="display:none">PENDING</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result PENDING">
+                                                                    <td>
+                                                                            <a href="4fa57374c83c4bc474b2e18776d1af7053dedce777c87c466b5f5f7e0e911de3.html">Validation of language change to "Greek"</a>
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td>16:25:46</td>
+                                                                    <td>6s 643ms</td>
+                                                                    <td>
+                                                                            <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a> <span
+                                                                                style="display:none">PENDING</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result PENDING">
+                                                                    <td>
+                                                                            <a href="a03b9f3b4a09cb18b5f6b9c998b4525db1b2dcddb0581d458c68a551b6a7f3ce.html">Validation of language change to "Polish"</a>
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td>16:25:53</td>
+                                                                    <td>6s 273ms</td>
+                                                                    <td>
+                                                                            <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a> <span
+                                                                                style="display:none">PENDING</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result PENDING">
+                                                                    <td>
+                                                                            <a href="6b46e7d02ad4f95dd58a0fe39de1adbb5da85e880a178e2ef819198e4574e81b.html">Validation of language change to "Filipino"</a>
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td>16:26:00</td>
+                                                                    <td>6s 862ms</td>
+                                                                    <td>
+                                                                            <a href='##beforetable'><i class='far fa-stop-circle pending-icon ' title='PENDING'></i></a> <span
+                                                                                style="display:none">PENDING</span>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <h3><i class="fas fa-edit"></i> Manual Tests</h3>
+
+                                                        No manual tests were recorded
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <span class="version">Serenity BDD version 2.4.34</span>
+                    </div>
+                </div>
+            </div>
+</body>
+</html>

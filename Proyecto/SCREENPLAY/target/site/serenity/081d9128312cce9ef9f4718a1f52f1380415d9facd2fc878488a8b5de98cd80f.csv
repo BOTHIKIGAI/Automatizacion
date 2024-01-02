@@ -1,0 +1,8 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Register","registration failed due to special characters","SUCCESS","2023-09-27T12:00:42.761-05:00[America/Bogota]","0.0","12.57"
+"Register","Successful register","SUCCESS","2023-09-27T18:04:33.379-05:00[America/Bogota]","0.0","18.22"
+"Register","Failed registration due to numerical data","SUCCESS","2023-09-27T18:04:52.451-05:00[America/Bogota]","0.0","12.7"
+"Register","Failed Registration due to special characters","SUCCESS","2023-09-27T18:05:05.909-05:00[America/Bogota]","0.0","11.92"
+"Register","Register Fail","SUCCESS","2023-09-27T18:05:18.56-05:00[America/Bogota]","0.0","12.23"
+"Register","Failed registration empty fields in email","SUCCESS","2023-09-27T18:05:31.612-05:00[America/Bogota]","0.0","14.89"
+"Register","Registration failed, empty password fields","SUCCESS","2023-09-27T18:05:47.202-05:00[America/Bogota]","0.0","15.84"

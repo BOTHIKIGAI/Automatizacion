@@ -1,0 +1,7 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Contact Us Form","Validation of the ""Save time and money"" form without entering an email address","SUCCESS","2023-09-27T15:22:17.585-05:00[America/Bogota]","0.0","9.81"
+"Contact Us Form","Validation of the ""Save time and money"" form with numbers","SUCCESS","2023-09-27T15:22:28.245-05:00[America/Bogota]","0.0","7.12"
+"Contact Us Form","Validation of ""Save time and money"" form letters","SUCCESS","2023-09-27T15:22:36.065-05:00[America/Bogota]","0.0","8.33"
+"Contact Us Form","Validation of the ""Save time and money"" form with symbols","SUCCESS","2023-09-27T15:22:45.1-05:00[America/Bogota]","0.0","8.74"
+"Contact Us Form","Validation of ""Save time and money"" form with alphanumeric","SUCCESS","2023-09-27T15:22:54.58-05:00[America/Bogota]","0.0","7.16"
+"Contact Us Form","Validación of the ""Save Time and Money"" form with mailing","SUCCESS","2023-09-27T15:23:02.477-05:00[America/Bogota]","0.0","6.46"

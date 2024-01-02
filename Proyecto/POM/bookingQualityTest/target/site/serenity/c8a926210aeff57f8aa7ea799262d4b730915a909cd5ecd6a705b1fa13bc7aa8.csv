@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Login","Login Succesful","ERROR","2023-09-27T11:52:42.508-05:00[America/Bogota]","0.0","33.26"
+"Login","Login Fail Password","ERROR","2023-09-27T11:54:11.825-05:00[America/Bogota]","0.0","28.85"
+"Register","Successful registration","ERROR","2023-09-27T08:57:05.944-05:00[America/Bogota]","0.0","118.7"
